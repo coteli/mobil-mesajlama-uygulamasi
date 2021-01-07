@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
-import Avatar from "./Avatar";
+import { Text, StyleSheet, View, TouchableOpacity, Image } from "react-native";
 import vt from "./firebase";
 
 export default function Odalar({ yeniOda, id, name }) {
@@ -19,7 +18,7 @@ export default function Odalar({ yeniOda, id, name }) {
   }, [id]);
 
   const odaOlustur = () => {
-    const roomName = prompt("Yeni oda için bir isim girin...");
+    const roomName = prompt((title: "Yeni oda için bir isim girin..."));
     if (roomName) {
       vt.collection("rooms").add({
         name: roomName,
@@ -35,9 +34,14 @@ export default function Odalar({ yeniOda, id, name }) {
         }}
       >
         <View style={styles.room}>
-          <View style={styles.avatar}>
-            <Avatar />
-          </View>
+          <Image
+            style={styles.avatar}
+            width="64"
+            height="64"
+            source={{
+              uri: `https://ui-avatars.com/api/?name=${name}&background=random&color=fff&rounded=true`,
+            }}
+          />
           <View>
             <Text style={styles.roomname}>{name}</Text>
             <Text style={styles.subtext}>{messages[0]?.messages}</Text>
@@ -66,6 +70,8 @@ const styles = StyleSheet.create({
     borderBottomColor: "lightgray",
   },
   avatar: {
+    width: 70,
+    height: 70,
     marginHorizontal: 10,
   },
   roomname: {
