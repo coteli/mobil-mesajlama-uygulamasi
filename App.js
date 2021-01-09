@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Anasayfa from "./src/screens/anasayfa";
+import AppNavigator from "./routes/mainStack";
 
 export default function App() {
-  return <Anasayfa />;
+  return <AppNavigator />;
 }

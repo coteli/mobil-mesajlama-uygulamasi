@@ -8,7 +8,7 @@ import {
   Button,
 } from "react-native";
 
-function Giris() {
+function Giris({ navigation }) {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={require("../../assets/giris.png")} />
@@ -23,7 +23,7 @@ function Giris() {
       <TouchableOpacity>
         <Button
           onPress={() => {
-            alert("Giriş");
+            navigation.push("Anasayfa");
           }}
           title="Google İle Giriş Yap"
         />

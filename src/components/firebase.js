@@ -3,13 +3,12 @@
 import firebase from "firebase";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAw0S_eSiC1MEqAVlpKh4NauX_Sq0owXVQ",
-  authDomain: "wtmu-a6f69.firebaseapp.com",
-  databaseURL: "https://wtmu-a6f69.firebaseio.com",
-  projectId: "wtmu-a6f69",
-  storageBucket: "wtmu-a6f69.appspot.com",
-  messagingSenderId: "452804808537",
-  appId: "1:452804808537:web:c4cc98aa08ed81f3eb0648",
+  apiKey: "AIzaSyBT8oLdiStQQhcGLV9wZvPfXbfmE74VneE",
+  authDomain: "momu-89607.firebaseapp.com",
+  projectId: "momu-89607",
+  storageBucket: "momu-89607.appspot.com",
+  messagingSenderId: "642727128090",
+  appId: "1:642727128090:web:18c65b0827f210a4d975a3",
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
