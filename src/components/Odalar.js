@@ -8,8 +8,7 @@ import {
   TextInput,
   Keyboard,
 } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 import vt from "./firebase";
 import { useNavigation } from "@react-navigation/native";
 
@@ -49,10 +48,8 @@ export default function Odalar({ yeniOda, name, id }) {
         <View style={styles.room}>
           <Image
             style={styles.avatar}
-            width="64"
-            height="64"
             source={{
-              uri: `https://ui-avatars.com/api/?name=${name}&background=ff0000&color=fff&rounded=true`,
+              uri: `https://ui-avatars.com/api/?name=${name}&background=random&color=fff&rounded=true`,
             }}
           />
 
@@ -61,7 +58,7 @@ export default function Odalar({ yeniOda, name, id }) {
             <Text style={styles.subtext}>{messages[0]?.message}</Text>
           </View>
           <View style={styles.icon}>
-            <Feather name="arrow-right-circle" size={24} color="gray" />
+            <Ionicons name="chevron-forward" size={24} color="black" />
           </View>
         </View>
       </TouchableOpacity>
@@ -74,9 +71,10 @@ export default function Odalar({ yeniOda, name, id }) {
           placeholder="Yeni Bir Oda Ekleyin!"
           onChangeText={(text) => setText(text)}
           value={text}
+          onSubmitEditing={odaOlustur}
         />
         <TouchableOpacity style={styles.icon} onPress={odaOlustur}>
-          <AntDesign name="pluscircleo" size={24} color="black" />
+          <AntDesign name="plus" size={24} color="black" />
         </TouchableOpacity>
       </View>
     </View>
@@ -103,7 +101,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   subtext: {
-    fontSize: 18,
+    fontSize: 16,
     color: "gray",
     fontStyle: "italic",
   },
@@ -118,7 +116,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 90,
     fontSize: 24,
-    padding: 30,
+    padding: 20,
   },
   icon: {
     marginLeft: "auto",

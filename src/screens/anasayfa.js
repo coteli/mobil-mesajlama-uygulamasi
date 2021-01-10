@@ -3,7 +3,6 @@ import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Odalar from "../components/Odalar";
 import vt from "../components/firebase";
-import { NavigationContainer } from "@react-navigation/native";
 
 export default function Anasayfa({ navigation }) {
   const [rooms, setRooms] = useState([]);
@@ -45,7 +44,9 @@ export default function Anasayfa({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    backgroundColor: "#fff",
+  },
   header: {
     height: 90,
     flexDirection: "row",

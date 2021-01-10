@@ -16,9 +16,9 @@ function Giris({ navigation }) {
         Mobil Mesajlaşma Uygulamasına Hoşgeldiniz!
       </Text>
       <Text style={styles.subtext}>
-        Bu uygulama ile oda ekleme seçeneğini kullanarak yeni bir Sohbet Odası
-        ekleyebilir veya mevcut odalardan herhangi birini seçerek mesajlaşmaya
-        başlayabilirsiniz!
+        Uygulamaya giriş yaptıktan sonra oda ekleme seçeneğini kullanarak yeni
+        bir Sohbet Odası ekleyebilir veya mevcut odalardan herhangi birini
+        seçerek mesajlaşmaya başlayabilirsiniz!
       </Text>
       <TouchableOpacity>
         <Button
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "white",
   },
   image: {
     marginBottom: 50,

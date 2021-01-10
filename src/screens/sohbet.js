@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  ImageBackground,
 } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
@@ -48,32 +49,35 @@ export default function Sohbet({ navigation }) {
       <View style={styles.header}>
         <Image
           style={styles.image}
-          width="64"
-          height="64"
           source={{
-            uri: `https://ui-avatars.com/api/?name=${roomName}&background=ff0000&color=fff&rounded=true`,
+            uri: `https://ui-avatars.com/api/?name=${roomName}&background=random&color=fff&rounded=true`,
           }}
         />
         <Text style={styles.roomname}>{roomName}</Text>
         <TouchableOpacity
           style={styles.icon}
           onPress={() => {
-            alert("Geri Dön");
+            navigation.goBack();
           }}
         >
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
       </View>
       <View style={styles.govde}>
-        {messages.map((message) => (
-          <View style={styles.gelenmesaj}>
-            <Text style={styles.mesaj_isim}>{message.name}</Text>
-            <Text style={styles.mesaj_metin}>{message.message}</Text>
-            <Text style={styles.mesaj_zaman}>
-              {new Date(message.timestamp?.toDate()).toLocaleString()}
-            </Text>
-          </View>
-        ))}
+        <ImageBackground
+          style={styles.bgimage}
+          source={require("../../assets/arkaplan.png")}
+        >
+          {messages.map((message, i) => (
+            <View style={styles.gelenmesaj} key={i}>
+              <Text style={styles.mesaj_isim}>{message.name}</Text>
+              <Text style={styles.mesaj_metin}>{message.message}</Text>
+              <Text style={styles.mesaj_zaman}>
+                {new Date(message.timestamp?.toDate()).toLocaleString()}
+              </Text>
+            </View>
+          ))}
+        </ImageBackground>
       </View>
       <View style={styles.mesajcontainer}>
         <TextInput
@@ -119,6 +123,11 @@ const styles = StyleSheet.create({
   },
   govde: {
     flex: 1,
+    overflow: "hidden",
+  },
+  bgimage: {
+    flex: 1,
+    resizeMode: "cover",
   },
   mesajcontainer: {
     flexDirection: "row",
