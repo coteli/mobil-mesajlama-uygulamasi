@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Odalar from "../components/Odalar";
 import vt from "../components/firebase";
@@ -35,10 +42,12 @@ export default function Anasayfa({ navigation }) {
           <AntDesign name="logout" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <Odalar yeniOda />
-      {rooms.map((room) => (
-        <Odalar name={room.data.name} key={room.id} id={room.id} />
-      ))}
+      <ScrollView>
+        <Odalar yeniOda />
+        {rooms.map((room) => (
+          <Odalar name={room.data.name} key={room.id} id={room.id} />
+        ))}
+      </ScrollView>
     </View>
   );
 }

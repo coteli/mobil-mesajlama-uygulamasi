@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   TextInput,
   ImageBackground,
+  ScrollView,
 } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
@@ -63,20 +64,23 @@ export default function Sohbet({ navigation }) {
           <AntDesign name="back" size={24} color="black" />
         </TouchableOpacity>
       </View>
+
       <View style={styles.govde}>
         <ImageBackground
           style={styles.bgimage}
           source={require("../../assets/arkaplan.png")}
         >
-          {messages.map((message, i) => (
-            <View style={styles.gelenmesaj} key={i}>
-              <Text style={styles.mesaj_isim}>{message.name}</Text>
-              <Text style={styles.mesaj_metin}>{message.message}</Text>
-              <Text style={styles.mesaj_zaman}>
-                {new Date(message.timestamp?.toDate()).toLocaleString()}
-              </Text>
-            </View>
-          ))}
+          <ScrollView>
+            {messages.map((message, i) => (
+              <View style={styles.gelenmesaj} key={i}>
+                <Text style={styles.mesaj_isim}>{message.name}</Text>
+                <Text style={styles.mesaj_metin}>{message.message}</Text>
+                <Text style={styles.mesaj_zaman}>
+                  {new Date(message.timestamp?.toDate()).toLocaleTimeString()}
+                </Text>
+              </View>
+            ))}
+          </ScrollView>
         </ImageBackground>
       </View>
       <View style={styles.mesajcontainer}>
@@ -143,5 +147,20 @@ const styles = StyleSheet.create({
     padding: 10,
     marginRight: 20,
     backgroundColor: "#fff",
+  },
+  gelenmesaj: {
+    position: "relative",
+    backgroundColor: "#fff",
+    maxWidth: 300,
+    marginHorizontal: 15,
+    marginVertical: 3,
+    padding: 10,
+    borderRadius: 10,
+  },
+  mesaj_isim: {
+    fontWeight: "bold",
+  },
+  mesaj_zaman: {
+    textAlign: "right",
   },
 });
