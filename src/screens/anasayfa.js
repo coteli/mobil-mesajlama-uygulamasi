@@ -10,8 +10,10 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import Odalar from "../components/Odalar";
 import vt from "../components/firebase";
+import { useRoute } from "@react-navigation/native";
 
 export default function Anasayfa({ navigation }) {
+  const route = useRoute();
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
@@ -31,8 +33,8 @@ export default function Anasayfa({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image style={styles.image} source={require("../../assets/icon.png")} />
-        <Text style={styles.username}>Avşar Çöteli</Text>
+        <Image style={styles.image} source={{ uri: route.params.userPhoto }} />
+        <Text style={styles.username}>{route.params.userName}</Text>
         <TouchableOpacity
           style={styles.icon}
           onPress={() => {

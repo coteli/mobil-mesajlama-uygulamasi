@@ -21,7 +21,11 @@ function Giris({ navigation }) {
       });
 
       if (result.type === "success") {
-        console.log("giriş yapıldı!");
+        console.log("giriş yapıldı!", result.user.name);
+        navigation.push("Anasayfa", {
+          userName: result.user.name,
+          userPhoto: result.user.photoUrl,
+        });
         return result.accessToken;
       } else {
         return { cancelled: true };
