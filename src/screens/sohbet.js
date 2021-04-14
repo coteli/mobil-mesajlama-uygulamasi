@@ -13,12 +13,15 @@ import { useRoute } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import vt from "../components/firebase";
+import firebase from "firebase";
 
 export default function Sohbet({ navigation }) {
   const [input, setInput] = useState("");
   const route = useRoute();
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
+
+  const userName = route.params.userName;
 
   useEffect(() => {
     if (route.params.id) {
@@ -39,7 +42,7 @@ export default function Sohbet({ navigation }) {
   const mesajGonder = () => {
     vt.collection("rooms").doc(route.params.id).collection("messages").add({
       message: input,
-      name: user.displayName,
+      name: userName,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setInput("");
@@ -72,7 +75,14 @@ export default function Sohbet({ navigation }) {
         >
           <ScrollView>
             {messages.map((message, i) => (
-              <View style={styles.gelenmesaj} key={i}>
+              <View
+                style={
+                  message.name === userName
+                    ? styles.gidenmesaj
+                    : styles.gelenmesaj
+                }
+                key={i}
+              >
                 <Text style={styles.mesaj_isim}>{message.name}</Text>
                 <Text style={styles.mesaj_metin}>{message.message}</Text>
                 <Text style={styles.mesaj_zaman}>
@@ -151,7 +161,19 @@ const styles = StyleSheet.create({
   gelenmesaj: {
     position: "relative",
     backgroundColor: "#fff",
+    maxWidth: 250,
+    marginHorizontal: 15,
+    marginVertical: 3,
+    padding: 10,
+    borderRadius: 10,
+  },
+  gidenmesaj: {
+    position: "relative",
+    backgroundColor: "#47b0d6",
+    color: "#fff",
+    marginLeft: "auto",
     maxWidth: 300,
+    width: 250,
     marginHorizontal: 15,
     marginVertical: 3,
     padding: 10,

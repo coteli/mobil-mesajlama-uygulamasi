@@ -12,7 +12,7 @@ import { AntDesign, Ionicons } from "@expo/vector-icons";
 import vt from "./firebase";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Odalar({ yeniOda, name, id }) {
+export default function Odalar({ yeniOda, name, id, userName }) {
   const [text, setText] = useState("");
   const [messages, setMessages] = useState("");
 
@@ -42,7 +42,7 @@ export default function Odalar({ yeniOda, name, id }) {
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() => {
-          navigation.push("Sohbet", { id: id });
+          navigation.push("Sohbet", { id: id, userName: userName });
         }}
       >
         <View style={styles.room}>

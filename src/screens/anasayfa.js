@@ -47,7 +47,12 @@ export default function Anasayfa({ navigation }) {
       <ScrollView>
         <Odalar yeniOda />
         {rooms.map((room) => (
-          <Odalar name={room.data.name} key={room.id} id={room.id} />
+          <Odalar
+            name={room.data.name}
+            key={room.id}
+            id={room.id}
+            userName={route.params.userName}
+          />
         ))}
       </ScrollView>
     </View>
