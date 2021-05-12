@@ -99,6 +99,7 @@ export default function Sohbet({ navigation }) {
           placeholder="Mesajınızı yazın..."
           onChangeText={(input) => setInput(input)}
           value={input}
+          onSubmitEditing={mesajGonder}
         />
         <TouchableOpacity onPress={mesajGonder}>
           <Feather name="send" size={24} color="black" />
