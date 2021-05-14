@@ -3,6 +3,7 @@ import {
   Text,
   StyleSheet,
   View,
+  KeyboardAvoidingView,
   Image,
   TouchableOpacity,
   TextInput,
@@ -73,7 +74,14 @@ export default function Sohbet({ navigation }) {
           style={styles.bgimage}
           source={require("../../assets/arkaplan.png")}
         >
-          <ScrollView>
+          <ScrollView
+            ref={(ref) => {
+              this.scrollView = ref;
+            }}
+            onContentSizeChange={() =>
+              this.scrollView.scrollToEnd({ animated: true })
+            }
+          >
             {messages.map((message, i) => (
               <View
                 style={
